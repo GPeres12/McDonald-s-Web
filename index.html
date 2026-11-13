@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>McDonald's® | McDelivery & Digital Experience</title>
+  <meta name="description" content="Order your favorite McDonald's burgers, World Famous Fries, McNuggets, and McCafé drinks. Fresh, hot, and delivered in minutes.">
+  <link rel="icon" type="image/svg+xml" href="mcdonalds-3.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+  <!-- TOP PROMO BANNER -->
+  <div class="top-banner" id="top-banner">
+    <div class="container banner-inner">
+      <div class="banner-content">
+        <span class="banner-badge" data-i18n="banner_badge">🔥 EXCLUSIVE DEAL</span>
+        <span class="banner-text"><span data-i18n="banner_text">Get 20% OFF your first McDelivery order! Use code</span> <strong class="copy-code-inline" title="Click to copy code" data-copy="GOLDEN20">GOLDEN20</strong></span>
+        <span class="banner-divider">•</span>
+        <span class="banner-highlight" data-i18n="banner_free">Free delivery on orders over $25</span>
+      </div>
+      <button class="banner-close" id="banner-close" aria-label="Close banner">✕</button>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER / NAVBAR -->
+  <header class="header" id="header">
+    <div class="container nav-wrap">
+      
+      <!-- BRAND LOGO -->
+      <a href="#home" class="brand" aria-label="McDonald's Home">
+        <img src="mcdonalds-3.svg" alt="McDonald's Golden Arches" class="brand-logo" width="44" height="38">
+        <div class="brand-text">
+          <span class="brand-name">McDonald's</span>
+          <span class="brand-tag">McDelivery™</span>
+        </div>
+      </a>
+
+      <!-- ORDER MODE TOGGLE (Delivery / Pickup / Drive-thru) -->
+      <div class="order-mode-pill" id="order-mode-selector">
+        <button class="mode-btn active" data-mode="delivery">
+          <span class="mode-icon">🛵</span>
+          <span class="mode-label" data-i18n="mode_delivery">Delivery</span>
+        </button>
+        <button class="mode-btn" data-mode="pickup">
+          <span class="mode-icon">🏃</span>
+          <span class="mode-label" data-i18n="mode_pickup">Pick-up</span>
+        </button>
+        <button class="mode-btn" data-mode="drivethru">
+          <span class="mode-icon">🚗</span>
+          <span class="mode-label" data-i18n="mode_drivethru">Drive-Thru</span>
+        </button>
+      </div>
+
+      <!-- DESKTOP NAV LINKS -->
+      <nav class="nav" id="nav">
+        <a href="#menu" class="nav-link active" data-i18n="nav_menu">Menu</a>
+        <a href="#combo-builder" class="nav-link" data-i18n="nav_combo">Meal Builder</a>
+        <a href="#deals" class="nav-link" data-i18n="nav_deals">Deals & Coupons</a>
+        <a href="#quality" class="nav-link" data-i18n="nav_quality">Our Quality</a>
+        <a href="#locator" class="nav-link" data-i18n="nav_locator">Locations</a>
+        <a href="#reviews" class="nav-link" data-i18n="nav_reviews">Reviews</a>
+      </nav>
+
+      <!-- NAV ACTIONS -->
+      <div class="nav-actions">
+        <!-- Live Search Trigger -->
+        <button class="action-icon-btn" id="search-trigger" aria-label="Search Menu" title="Search (Ctrl + K)">
+          🔍
+        </button>
+
+        <!-- Sound FX Toggle -->
+        <button class="action-icon-btn" id="sound-toggle" aria-label="Toggle Sound Effects" title="Sound Effects">
+          <span id="sound-icon">🔊</span>
+        </button>
+
+        <!-- Dark/Light Theme Toggle -->
+        <button class="action-icon-btn" id="theme-toggle" aria-label="Toggle Theme" title="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+
+        <!-- Language Selector Dropdown (EN / PT-BR / ES) -->
+        <div class="lang-dropdown" id="lang-dropdown">
+          <button class="lang-btn" id="lang-btn" aria-label="Change Language" aria-expanded="false" title="Language: English / Português / Español">
+            <span class="lang-flag" id="current-lang-flag">🇺🇸</span>
+            <span class="lang-code" id="current-lang-code">EN</span>
+            <span class="lang-arrow">▾</span>
+          </button>
+          <div class="lang-menu" id="lang-menu">
+            <button class="lang-option active" data-lang="en">
+              <span class="lo-flag">🇺🇸</span>
+              <span class="lo-label">English (US)</span>
+            </button>
+            <button class="lang-option" data-lang="pt">
+              <span class="lo-flag">🇧🇷</span>
+              <span class="lo-label">Português (BR)</span>
+            </button>
+            <button class="lang-option" data-lang="es">
+              <span class="lo-flag">🇪🇸</span>
+              <span class="lo-label">Español</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Wishlist / Favorites -->
+        <button class="action-icon-btn fav-btn" id="fav-trigger" aria-label="View Favorites" title="Favorites">
+          ❤️ <span class="badge-count" id="fav-count">0</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button class="cart-btn" id="cart-btn" aria-label="View Cart">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-total-badge" id="cart-total-badge">$0.00</span>
+          <span class="badge-count cart-count" id="cart-count">0</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-bg-glow"></div>
+    <div class="container hero-grid">
+      
+      <!-- HERO TEXT -->
+      <div class="hero-content">
+        <div class="hero-status-pill">
+          <span class="status-dot"></span>
+          <span data-i18n="hero_status">Kitchen Live: Sizzling & Delivering 24/7</span>
+        </div>
+
+        <h1 class="hero-title" data-i18n="hero_title">
+          The Golden Standard,<br>
+          <span class="text-gradient">I'm Lovin' It.</span>
+        </h1>
+
+        <p class="hero-desc" data-i18n="hero_desc">
+          100% fresh inspected beef, legendary golden fries, sizzling McNuggets, and handcrafted McCafé® drinks. Made fresh to order and delivered hot to your doorstep in minutes.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#menu" class="btn btn-primary btn-lg">
+            <span data-i18n="hero_btn_order">Order McDelivery</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="#combo-builder" class="btn btn-secondary btn-lg">
+            <span data-i18n="hero_btn_combo">Build Your Combo</span>
+            <span class="btn-icon">🍔</span>
+          </a>
+        </div>
+
+        <!-- HERO STATS & TRUST BADGES -->
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-num">100%</span>
+            <span class="stat-label" data-i18n="stat_beef">Pure Beef & No Fillers</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">18 min</span>
+            <span class="stat-label" data-i18n="stat_speed">Avg. Delivery Speed</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">4.9 ★</span>
+            <span class="stat-label" data-i18n="stat_orders">Over 500k+ Orders</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO VISUAL / 3D SHOWCASE -->
+      <div class="hero-visual-wrapper">
+        <div class="hero-card-featured">
+          <div class="featured-glow"></div>
+          
+          <div class="featured-badge" data-i18n="hero_card_badge">⭐ Crown Favorite</div>
+          
+          <div class="featured-img-wrap">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80" alt="Big Mac Burger" class="featured-img" id="hero-featured-img">
+            <div class="floating-tag t1">🧀 Melted Cheddar</div>
+            <div class="floating-tag t2">🥩 Double 100% Beef</div>
+            <div class="floating-tag t3">🥫 Secret Mac Sauce</div>
+          </div>
+
+          <div class="featured-details">
+            <div class="featured-meta">
+              <span class="item-cal">590 kcal</span>
+              <span class="item-rating">★ 4.9 (14.2k)</span>
+            </div>
+            <h3 class="featured-title" data-i18n="hero_card_title">Big Mac® Extra Value Pack</h3>
+            <p class="featured-desc" data-i18n="hero_card_desc">Two 100% pure beef patties, special sauce, crisp lettuce, melted American cheese, pickles & onions on a toasted sesame seed bun.</p>
+            <div class="featured-action">
+              <div class="price-wrap">
+                <span class="price-current">$6.49</span>
+                <span class="price-original">$7.99</span>
+              </div>
+              <button class="btn btn-primary btn-sm quick-add-btn" data-add="1">
+                <span data-i18n="hero_card_add">+ Quick Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROMOS & DEALS CAROUSEL -->
+  <section class="section-deals" id="deals">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">
+          <img src="mcdonalds-3.svg" alt="" width="18" height="15">
+          <span data-i18n="deals_eyebrow">Daily McDeals & Perks</span>
+        </div>
+        <h2 class="section-title" data-i18n="deals_title">Save Big on Your Favorites</h2>
+        <p class="section-subtitle" data-i18n="deals_subtitle">Exclusive digital coupons ready to redeem with one click.</p>
+      </div>
+
+      <div class="deals-grid">
+        
+        <!-- DEAL 1 -->
+        <div class="deal-card">
+          <div class="deal-ribbon">20% OFF</div>
+          <div class="deal-body">
+            <span class="deal-tag">FIRST ORDER</span>
+            <h3 class="deal-title">20% Off Everything</h3>
+            <p class="deal-desc">Enjoy 20% off your entire McDelivery order when you spend $20 or more.</p>
+            <div class="coupon-box">
+              <code class="coupon-code">GOLDEN20</code>
+              <button class="coupon-copy-btn" data-coupon="GOLDEN20" data-i18n="apply_code">Apply Code</button>
+            </div>
+            <div class="deal-timer" data-expires="14400">
+              <span>⏳ <span data-i18n="expires_in">Expires in:</span> <strong class="timer-display">03:59:45</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEAL 2 -->
+        <div class="deal-card deal-featured">
+          <div class="deal-ribbon deal-ribbon-red">FREE GIFT</div>
+          <div class="deal-body">
+            <span class="deal-tag">LIMITED TIME</span>
+            <h3 class="deal-title">Free World Famous Fries®</h3>
+            <p class="deal-desc">Complimentary Medium Fries with any purchase of a Signature Burger.</p>
+            <div class="coupon-box">
+              <code class="coupon-code">FREEFRIES</code>
+              <button class="coupon-copy-btn" data-coupon="FREEFRIES" data-i18n="apply_code">Apply Code</button>
+            </div>
+            <div class="deal-timer" data-expires="7200">
+              <span>⏳ <span data-i18n="expires_in">Expires in:</span> <strong class="timer-display">01:59:45</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEAL 3 -->
+        <div class="deal-card">
+          <div class="deal-ribbon">$5 OFF</div>
+          <div class="deal-body">
+            <span class="deal-tag">VALUE COMBO</span>
+            <h3 class="deal-title">$5 Off Family ShareBox</h3>
+            <p class="deal-desc">Get $5 off when you order 20pc McNuggets + 2 Large Fries + 2 Drinks.</p>
+            <div class="coupon-box">
+              <code class="coupon-code">SHAREBOX5</code>
+              <button class="coupon-copy-btn" data-coupon="SHAREBOX5" data-i18n="apply_code">Apply Code</button>
+            </div>
+            <div class="deal-timer" data-expires="28800">
+              <span>⏳ <span data-i18n="expires_in">Expires in:</span> <strong class="timer-display">07:59:45</strong></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE COMBO BUILDER -->
+  <section class="section-combo" id="combo-builder">
+    <div class="container">
+      <div class="combo-wrapper">
+        
+        <div class="combo-info">
+          <div class="eyebrow">
+            <span data-i18n="combo_eyebrow">Custom Meal Builder</span>
+          </div>
+          <h2 class="section-title" data-i18n="combo_title">The Golden Combo Creator</h2>
+          <p class="section-subtitle" data-i18n="combo_subtitle">Choose your favorite Sandwich, a golden Side, and an ice-cold Beverage for an instant <strong>$3.00 bundle discount</strong>.</p>
+          
+          <div class="combo-steps-indicator">
+            <div class="step-badge active" id="step-1-badge" data-i18n="combo_step1">1. Burger</div>
+            <div class="step-line"></div>
+            <div class="step-badge active" id="step-2-badge" data-i18n="combo_step2">2. Side</div>
+            <div class="step-line"></div>
+            <div class="step-badge active" id="step-3-badge" data-i18n="combo_step3">3. Drink</div>
+          </div>
+
+          <div class="combo-summary-box">
+            <h4 data-i18n="combo_summary_head">Your Selected Meal:</h4>
+            <div class="combo-summary-items">
+              <div class="cs-item" id="cs-burger">🍔 Big Mac®</div>
+              <div class="cs-item" id="cs-side">🍟 Medium Fries</div>
+              <div class="cs-item" id="cs-drink">🥤 Coca-Cola® Zero</div>
+            </div>
+            <div class="combo-pricing">
+              <div class="cp-discount"><span data-i18n="combo_savings">Bundle Savings:</span> <span>-$3.00</span></div>
+              <div class="cp-total"><span data-i18n="combo_meal_total">Meal Total:</span> <strong id="combo-price-display">$9.99</strong></div>
+            </div>
+            <button class="btn btn-primary full" id="add-combo-to-cart">
+              <span data-i18n="combo_add_btn">Add Golden Combo to Order 🛒</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="combo-selector-panel">
+          
+          <!-- SELECTOR 1: BURGER -->
+          <div class="combo-group">
+            <h4 class="cg-title" data-i18n="combo_choose_main">1. Choose Your Main</h4>
+            <div class="combo-options-grid" id="combo-burgers-grid">
+              <!-- Dynamically populated or static template -->
+              <label class="combo-radio active">
+                <input type="radio" name="combo-main" value="Big Mac®" data-price="6.49" checked>
+                <div class="cr-card">
+                  <span class="cr-emoji">🍔</span>
+                  <strong class="cr-name">Big Mac®</strong>
+                  <span class="cr-sub">+$0.00</span>
+                </div>
+              </label>
+              <label class="combo-radio">
+                <input type="radio" name="combo-main" value="Quarter Pounder®" data-price="6.99">
+                <div class="cr-card">
+                  <span class="cr-emoji">🥩</span>
+                  <strong class="cr-name">Quarter Pounder®</strong>
+                  <span class="cr-sub">+$0.50</span>
+                </div>
+              </label>
+              <label class="combo-radio">
+                <input type="radio" name="combo-main" value="Spicy McCrispy™" data-price="6.79">
+                <div class="cr-card">
+                  <span class="cr-emoji">🍗</span>
+                  <strong class="cr-name">Spicy McCrispy™</strong>
+                  <span class="cr-sub">+$0.30</span>
+                </div>
+              </label>
+              <label class="combo-radio">
+                <input type="radio" name="combo-main" value="Filet-O-Fish®" data-price="5.99">
+                <div class="cr-card">
+                  <span class="cr-emoji">🐟</span>
+                  <strong class="cr-name">Filet-O-Fish®</strong>
+                  <span class="cr-sub">-$0.50</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- SELECTOR 2: SIDES -->
+          <div class="combo-group">
+            <h4 class="cg-title" data-i18n="combo_choose_side">2. Choose Your Side</h4>
+            <div class="combo-options-grid" id="combo-sides-grid">
+              <label class="combo-radio active">
+                <input type="radio" name="combo-side" value="Medium World Famous Fries®" data-price="3.49" checked>
+                <div class="cr-card">
+                  <span class="cr-emoji">🍟</span>
+                  <strong class="cr-name">Medium Fries</strong>
+                  <span class="cr-sub">Included</span>
+                </div>
+              </label>
+              <label class="combo-radio">
+                <input type="radio" name="combo-side" value="Large World Famous Fries®" data-price="4.29">
+                <div class="cr-card">
+                  <span class="cr-emoji">🍟</span>
+                  <strong class="cr-name">Large Fries</strong>
+                  <span class="cr-sub">+$0.80</span>
+                </div>
+              </label>
+              <label class="combo-radio">
+                <input type="radio" name="combo-side" value="4pc Chicken McNuggets®" data-price="3.69">
+                <div class="cr-card">
+                  <span class="cr-emoji">🍗</span>
+                  <strong class="cr-name">4pc McNuggets</strong>
+                  <span class="cr-sub">+$0.20</span>
+                </div>
+              </label>
+              <label class="combo-radio">
+                <input type="radio" name="combo-side" value="Side Garden Salad" data-price="3.29">
+                <div class="cr-card">
+                  <span class="cr-emoji">🥗</span>
+                  <strong class="cr-name">Side Salad</strong>
+                  <span class="cr-sub">Included</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- SELECTOR 3: DRINKS -->
+          <div class="combo-group">
+            <h4 class="cg-title" data-i18n="combo_choose_drink">3. Choose Your Beverage</h4>
+            <div class="combo-options-grid" id="combo-drinks-grid">
+              <label class="combo-radio active">
+                <input type="radio" name="combo-drink" value="Coca-Cola® Zero (Medium)" data-price="2.49" checked>
+                <div class="cr-card">
+                  <span class="cr-emoji">🥤</span>
+                  <strong class="cr-name">Coke Zero</strong>
+                  <span class="cr-sub">Included</span>
+                </div>
+              </label>
+              <label class="combo-radio">
+                <input type="radio" name="combo-drink" value="McCafé® Iced Frappé" data-price="4.29">
+                <div class="cr-card">
+                  <span class="cr-emoji">☕</span>
+                  <strong class="cr-name">Iced Frappé</strong>
+                  <span class="cr-sub">+$1.80</span>
+                </div>
+              </label>
+              <label class="combo-radio">
+                <input type="radio" name="combo-drink" value="OREO® McFlurry®" data-price="3.99">
+                <div class="cr-card">
+                  <span class="cr-emoji">🍦</span>
+                  <strong class="cr-name">Oreo McFlurry</strong>
+                  <span class="cr-sub">+$1.50</span>
+                </div>
+              </label>
+              <label class="combo-radio">
+                <input type="radio" name="combo-drink" value="Fresh Orange Juice" data-price="2.99">
+                <div class="cr-card">
+                  <span class="cr-emoji">🍊</span>
+                  <strong class="cr-name">Orange Juice</strong>
+                  <span class="cr-sub">+$0.50</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY CATEGORIES NAV & MENU SECTION -->
+  <section class="section-menu" id="menu">
+    <div class="container">
+      
+      <div class="section-header">
+        <div class="eyebrow">
+          <img src="mcdonalds-3.svg" alt="" width="18" height="15">
+          <span data-i18n="menu_eyebrow">Fresh From The Grill</span>
+        </div>
+        <h2 class="section-title" data-i18n="menu_title">Explore The Full Menu</h2>
+        <p class="section-subtitle" data-i18n="menu_subtitle">Handcrafted with premium ingredients, prepared hot when you click order.</p>
+      </div>
+
+      <!-- FILTER PILLS ROW -->
+      <div class="category-sticky-bar">
+        <div class="category-scroll">
+          <button class="cat-pill active" data-category="all">
+            <span class="cat-icon">⭐</span>
+            <span data-i18n="cat_all">All Favorites</span>
+          </button>
+          <button class="cat-pill" data-category="burgers">
+            <span class="cat-icon">🍔</span>
+            <span data-i18n="cat_burgers">Burgers & Beef</span>
+          </button>
+          <button class="cat-pill" data-category="chicken">
+            <span class="cat-icon">🍗</span>
+            <span data-i18n="cat_chicken">Chicken & McNuggets</span>
+          </button>
+          <button class="cat-pill" data-category="sides">
+            <span class="cat-icon">🍟</span>
+            <span data-i18n="cat_sides">Fries & Sides</span>
+          </button>
+          <button class="cat-pill" data-category="mccafe">
+            <span class="cat-icon">☕</span>
+            <span data-i18n="cat_mccafe">McCafé® & Drinks</span>
+          </button>
+          <button class="cat-pill" data-category="desserts">
+            <span class="cat-icon">🍦</span>
+            <span data-i18n="cat_desserts">McFlurry® & Sweets</span>
+          </button>
+          <button class="cat-pill" data-category="breakfast">
+            <span class="cat-icon">🥞</span>
+            <span data-i18n="cat_breakfast">All-Day Breakfast</span>
+          </button>
+          <button class="cat-pill" data-category="saver">
+            <span class="cat-icon">🏷️</span>
+            <span data-i18n="cat_saver">Value Under $5</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SEARCH & SUB-FILTERS TOOLBAR -->
+      <div class="menu-toolbar">
+        
+        <!-- Live Search Input -->
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="menu-search-input" placeholder="Search Big Mac, McFlurry, Fries, Coffee..." autocomplete="off" data-i18n-placeholder="search_placeholder">
+          <button class="clear-search" id="clear-search" aria-label="Clear Search">✕</button>
+        </div>
+
+        <!-- Dietary Preference Filters -->
+        <div class="dietary-filters">
+          <span class="filter-label" data-i18n="diet_label">Dietary:</span>
+          <button class="diet-btn active" data-diet="all" data-i18n="diet_all">All</button>
+          <button class="diet-btn" data-diet="beef" data-i18n="diet_beef">🥩 100% Beef</button>
+          <button class="diet-btn" data-diet="chicken" data-i18n="diet_chicken">🍗 Chicken</button>
+          <button class="diet-btn" data-diet="spicy" data-i18n="diet_spicy">🌶️ Spicy</button>
+          <button class="diet-btn" data-diet="veggie" data-i18n="diet_veggie">🍃 Veggie Friendly</button>
+        </div>
+
+        <!-- Sort Select -->
+        <div class="sort-box">
+          <label for="menu-sort" class="sort-label" data-i18n="sort_label">Sort by:</label>
+          <select id="menu-sort" class="sort-select">
+            <option value="popular" data-i18n="sort_popular">Most Popular</option>
+            <option value="price-asc" data-i18n="sort_price_asc">Price: Low to High</option>
+            <option value="price-desc" data-i18n="sort_price_desc">Price: High to Low</option>
+            <option value="calories" data-i18n="sort_calories">Calories: Low to High</option>
+            <option value="name" data-i18n="sort_name">Alphabetical (A-Z)</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- RESULTS COUNT & ACTIVE FILTER PILLS -->
+      <div class="results-meta">
+        <span id="results-count">Showing 24 delicious items</span>
+        <button class="reset-filters-btn" id="reset-filters" style="display: none;">Reset Filters ↺</button>
+      </div>
+
+      <!-- MAIN MENU GRID -->
+      <div class="menu-grid" id="menu-grid">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUALITY & SOURCING SECTION -->
+  <section class="section-quality" id="quality">
+    <div class="container">
+      <div class="quality-grid">
+        
+        <div class="quality-text">
+          <div class="eyebrow">
+            <img src="mcdonalds-3.svg" alt="" width="18" height="15">
+            <span>Our Food Commitment</span>
+          </div>
+          <h2 class="section-title">Real Ingredients.<br>Nothing to Hide.</h2>
+          <p class="section-subtitle">
+            From farm fields to our kitchens, we believe the best flavor begins with honesty, high standards, and responsible sourcing.
+          </p>
+
+          <div class="quality-pillars">
+            <div class="pillar">
+              <div class="pillar-icon">🥩</div>
+              <div class="pillar-content">
+                <h4>100% Pure Beef</h4>
+                <p>No fillers, no preservatives, no artificial binders. Just 100% USDA/Canadian inspected pure beef seasoned with a pinch of salt and pepper.</p>
+              </div>
+            </div>
+
+            <div class="pillar">
+              <div class="pillar-icon">🥔</div>
+              <div class="pillar-content">
+                <h4>World Famous Russet Burbank Potatoes</h4>
+                <p>Sourced from dedicated family farms, flash-cooked to perfection in vegetable oil for signature golden crunch and fluffy warmth.</p>
+              </div>
+            </div>
+
+            <div class="pillar">
+              <div class="pillar-icon">☕</div>
+              <div class="pillar-content">
+                <h4>100% Rainforest Alliance Arabica Beans</h4>
+                <p>Our McCafé espresso and drip coffees are ethically sourced and freshly ground for every single cup.</p>
+              </div>
+            </div>
+
+            <div class="pillar">
+              <div class="pillar-icon">🥚</div>
+              <div class="pillar-content">
+                <h4>Freshly Cracked Grade A Eggs</h4>
+                <p>Every single Egg McMuffin® is crafted with a real Grade A egg, freshly cracked directly onto our grill every morning.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quality-visual">
+          <div class="qv-card">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=80" alt="Fresh Quarter Pounder Ingredients" class="qv-img">
+            <div class="qv-badge">
+              <span class="qv-badge-icon">🌿</span>
+              <span>100% Sustainable Packaging by 2026</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STORE LOCATOR & LIVE DELIVERY RADIUS -->
+  <section class="section-locator" id="locator">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">
+          <img src="mcdonalds-3.svg" alt="" width="18" height="15">
+          <span>Find A Golden Arch</span>
+        </div>
+        <h2 class="section-title">Order From Your Nearest Store</h2>
+        <p class="section-subtitle">Real-time store tracking, drive-thru hours, and direct kitchen dispatch.</p>
+      </div>
+
+      <div class="locator-grid">
+        
+        <div class="locator-search-col">
+          <div class="store-search-box">
+            <input type="text" id="store-search-input" placeholder="Enter City, Zip Code or Address..." value="New York, NY">
+            <button class="btn btn-primary btn-sm" id="store-search-btn">Find Nearby</button>
+          </div>
+
+          <div class="stores-list" id="stores-list">
+            
+            <div class="store-item active" data-store-id="1">
+              <div class="si-head">
+                <span class="si-status open">● Open 24 Hours</span>
+                <span class="si-dist">0.8 miles away</span>
+              </div>
+              <h4 class="si-name">Broadway & 42nd St Flagship</h4>
+              <p class="si-address">1560 Broadway, Times Square, NY 10036</p>
+              <div class="si-amenities">
+                <span>🚗 Drive-thru</span>
+                <span>☕ McCafé</span>
+                <span>🛵 McDelivery Hub</span>
+                <span>📱 Mobile Pay</span>
+              </div>
+              <button class="si-select-btn">Selected Store ✓</button>
+            </div>
+
+            <div class="store-item" data-store-id="2">
+              <div class="si-head">
+                <span class="si-status open">● Open until 2:00 AM</span>
+                <span class="si-dist">1.4 miles away</span>
+              </div>
+              <h4 class="si-name">5th Avenue & 34th St</h4>
+              <p class="si-address">341 5th Ave, Midtown Manhattan, NY 10016</p>
+              <div class="si-amenities">
+                <span>☕ McCafé</span>
+                <span>🛵 McDelivery Hub</span>
+                <span>🛝 PlayPlace</span>
+              </div>
+              <button class="si-select-btn">Set as My Store</button>
+            </div>
+
+            <div class="store-item" data-store-id="3">
+              <div class="si-head">
+                <span class="si-status open">● Open 24 Hours</span>
+                <span class="si-dist">2.1 miles away</span>
+              </div>
+              <h4 class="si-name">Hudson Yards Express</h4>
+              <p class="si-address">500 W 33rd St, New York, NY 10001</p>
+              <div class="si-amenities">
+                <span>🚗 Drive-thru</span>
+                <span>🛵 McDelivery Hub</span>
+                <span>⚡ EV Charging</span>
+              </div>
+              <button class="si-select-btn">Set as My Store</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="locator-map-col">
+          <div class="map-placeholder">
+            <div class="map-grid-art"></div>
+            <div class="map-marker m1 active" title="Broadway Flagship">
+              <img src="mcdonalds-3.svg" alt="" width="20">
+              <div class="marker-pulse"></div>
+            </div>
+            <div class="map-marker m2" title="5th Avenue">
+              <img src="mcdonalds-3.svg" alt="" width="16">
+            </div>
+            <div class="map-marker m3" title="Hudson Yards">
+              <img src="mcdonalds-3.svg" alt="" width="16">
+            </div>
+            <div class="map-overlay-card">
+              <div class="moc-title">📍 Serving Address:</div>
+              <strong id="active-store-name">Broadway & 42nd St Flagship</strong>
+              <div class="moc-status">Estimated Cooking & Transit Time: <strong>16-22 min</strong></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER REVIEWS & FEEDBACK -->
+  <section class="section-reviews" id="reviews">
+    <div class="container">
+      
+      <div class="section-header">
+        <div class="eyebrow">
+          <img src="mcdonalds-3.svg" alt="" width="18" height="15">
+          <span>Customer Lovin'</span>
+        </div>
+        <h2 class="section-title">Loved by Millions Every Day</h2>
+        <p class="section-subtitle">Real experiences from verified McDelivery eaters.</p>
+      </div>
+
+      <!-- RATING BREAKDOWN CARD -->
+      <div class="rating-overview-card">
+        <div class="roc-score">
+          <div class="roc-big">4.9</div>
+          <div class="roc-stars">★★★★★</div>
+          <span class="roc-count">Based on 18,490+ ratings</span>
+        </div>
+        <div class="roc-bars">
+          <div class="rbar-row">
+            <span>5 ★</span>
+            <div class="rbar-track"><div class="rbar-fill" style="width: 92%"></div></div>
+            <span>92%</span>
+          </div>
+          <div class="rbar-row">
+            <span>4 ★</span>
+            <div class="rbar-track"><div class="rbar-fill" style="width: 6%"></div></div>
+            <span>6%</span>
+          </div>
+          <div class="rbar-row">
+            <span>3 ★</span>
+            <div class="rbar-track"><div class="rbar-fill" style="width: 1.5%"></div></div>
+            <span>1.5%</span>
+          </div>
+          <div class="rbar-row">
+            <span>2 ★</span>
+            <div class="rbar-track"><div class="rbar-fill" style="width: 0.3%"></div></div>
+            <span>0.3%</span>
+          </div>
+          <div class="rbar-row">
+            <span>1 ★</span>
+            <div class="rbar-track"><div class="rbar-fill" style="width: 0.2%"></div></div>
+            <span>0.2%</span>
+          </div>
+        </div>
+        <div class="roc-action">
+          <button class="btn btn-secondary" id="open-review-modal-btn">Write a Review ✍️</button>
+        </div>
+      </div>
+
+      <!-- REVIEWS GRID -->
+      <div class="reviews-grid" id="reviews-grid">
+        
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar">MJ</div>
+            <div class="reviewer-meta">
+              <strong>Marcus Johnson</strong>
+              <span class="verified-tag">✓ Verified McDelivery</span>
+            </div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <p class="review-text">"Arrived in literally 14 minutes and the fries were still smoking hot and crispy! The new Double Quarter Pounder is next level. 10/10 service."</p>
+          <div class="review-footer">
+            <span class="review-date">Yesterday • Broadway Flagship</span>
+            <span class="review-helpful">👍 Helpful (42)</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar av-pink">SL</div>
+            <div class="reviewer-meta">
+              <strong>Sophia Lin</strong>
+              <span class="verified-tag">✓ Verified McDelivery</span>
+            </div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <p class="review-text">"The customization tool is brilliant! Added extra pickles and extra Mac sauce, and the kitchen got it 100% right. Plus the Oreo McFlurry was still perfectly frozen."</p>
+          <div class="review-footer">
+            <span class="review-date">3 days ago • 5th Avenue Store</span>
+            <span class="review-helpful">👍 Helpful (89)</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar av-yellow">DR</div>
+            <div class="reviewer-meta">
+              <strong>David Rodriguez</strong>
+              <span class="verified-tag">✓ Verified McDelivery</span>
+            </div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <p class="review-text">"Best breakfast combo on the planet. Fresh cracked egg on the Egg McMuffin with a crunchy golden Hash Brown. Saved 20% with the GOLDEN20 coupon!"</p>
+          <div class="review-footer">
+            <span class="review-date">1 week ago • Times Square Hub</span>
+            <span class="review-helpful">👍 Helpful (64)</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section-faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">
+          <img src="mcdonalds-3.svg" alt="" width="18" height="15">
+          <span>Got Questions?</span>
+        </div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about McDelivery, ingredients, and deals.</p>
+      </div>
+
+      <div class="faq-accordion">
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How fast does McDelivery arrive?</span>
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Our average delivery time is between 15 and 25 minutes depending on your distance from the preparing store. Hot food items like our World Famous Fries are sealed in thermal insulated bags to ensure they arrive steaming hot and crispy.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I customize my burger and meal options?</span>
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! Simply click the "Customize" button on any burger to select your bun type (Sesame, Brioche, Gluten-Free, Lettuce Wrap), adjust patty count, add extra melted cheddar, bacon, or customize your sauces.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How does Free Delivery work?</span>
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Orders totaling $25.00 or more before taxes automatically unlock 100% Free McDelivery! You can track your progress right in your cart drawer with the real-time progress bar.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Where do you source your beef and chicken?</span>
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Our burger patties are made with 100% pure beef with no fillers, additives, or preservatives. Our chicken is 100% white breast meat sourced from USDA-inspected farms.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I apply digital promo coupons?</span>
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Click "Apply Code" on any voucher card in the Deals section, or type the code (e.g. <code>GOLDEN20</code>) into the promo code box inside your Cart drawer before checkout.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APP DOWNLOAD TEASER -->
+  <section class="section-app">
+    <div class="container">
+      <div class="app-banner">
+        <div class="app-content">
+          <span class="app-tag">📱 THE OFFICIAL MCDONALD'S APP</span>
+          <h2>Get Free Food & Daily McDelivery Rewards</h2>
+          <p>Earn 100 points for every dollar spent. Redeem points for free Big Macs, Happy Meals, and McCafé treats.</p>
+          <div class="app-badges">
+            <button class="app-badge-btn">
+              <span class="ab-icon">🍏</span>
+              <div class="ab-text">
+                <small>Download on the</small>
+                <strong>Apple App Store</strong>
+              </div>
+            </button>
+            <button class="app-badge-btn">
+              <span class="ab-icon">▶</span>
+              <div class="ab-text">
+                <small>Get it on</small>
+                <strong>Google Play</strong>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="app-mockup">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <img src="mcdonalds-3.svg" alt="" width="60">
+              <h4>MyMcDonald's Rewards</h4>
+              <p>5,420 Points Available</p>
+              <div class="phone-pill">Free Big Mac Ready! 🎉</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="#home" class="brand">
+            <img src="mcdonalds-3.svg" alt="McDonald's Golden Arches" class="brand-logo" width="48" height="42">
+            <div class="brand-text">
+              <span class="brand-name">McDonald's</span>
+              <span class="brand-slogan">I'm lovin' it®</span>
+            </div>
+          </a>
+          <p class="footer-tagline">
+            Serving smiles, iconic flavor, and golden memories to over 69 million guests daily across 100+ countries.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+            <a href="#" class="social-btn" aria-label="TikTok">🎵</a>
+            <a href="#" class="social-btn" aria-label="Twitter/X">🐦</a>
+            <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+            <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Order & Menus</h4>
+          <ul>
+            <li><a href="#menu" data-category-link="burgers">Burgers & Sandwiches</a></li>
+            <li><a href="#menu" data-category-link="chicken">Chicken & McNuggets</a></li>
+            <li><a href="#menu" data-category-link="sides">World Famous Fries®</a></li>
+            <li><a href="#menu" data-category-link="mccafe">McCafé® Beverages</a></li>
+            <li><a href="#menu" data-category-link="desserts">McFlurry® & Treats</a></li>
+            <li><a href="#combo-builder">Value Meal Combos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Customer Care</h4>
+          <ul>
+            <li><a href="#locator">Find a Restaurant</a></li>
+            <li><a href="#faq">Delivery FAQ & Help</a></li>
+            <li><a href="#quality">Nutritional Information</a></li>
+            <li><a href="#quality">Allergen Policy</a></li>
+            <li><a href="#deals">Rewards & Coupons</a></li>
+            <li><a href="#contact">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter-col">
+          <h4>Stay in the Golden Loop</h4>
+          <p>Subscribe for secret drop alerts, seasonal menu leaks, and VIP discount coupons.</p>
+          <form id="newsletter-form" class="newsletter-form">
+            <div class="nl-input-wrap">
+              <input type="email" id="nl-email" placeholder="Enter your email address" required>
+              <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+            </div>
+            <small class="nl-note">By subscribing you agree to receive digital marketing offers.</small>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="copyright">
+          © 2026 McDonald's Corporation. All Rights Reserved. The Golden Arches logo, "I'm lovin' it", Big Mac, and McCafé are trademarks of McDonald's Corp.
+        </div>
+        <div class="legal-links">
+          <a href="#">Privacy Center</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Do Not Sell My Info</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- MOBILE BOTTOM NAVIGATION BAR -->
+  <div class="mobile-bottom-bar">
+    <a href="#home" class="mb-item active">
+      <span class="mb-icon">🏠</span>
+      <span class="mb-label">Home</span>
+    </a>
+    <a href="#menu" class="mb-item">
+      <span class="mb-icon">🍔</span>
+      <span class="mb-label">Menu</span>
+    </a>
+    <a href="#deals" class="mb-item">
+      <span class="mb-icon">🏷️</span>
+      <span class="mb-label">Deals</span>
+    </a>
+    <button class="mb-item" id="mobile-fav-btn">
+      <span class="mb-icon">❤️</span>
+      <span class="mb-label">Favorites</span>
+      <span class="badge-count" id="mb-fav-count">0</span>
+    </button>
+    <button class="mb-item" id="mobile-cart-btn">
+      <span class="mb-icon">🛒</span>
+      <span class="mb-label">Bag</span>
+      <span class="badge-count" id="mb-cart-count">0</span>
+    </button>
+  </div>
+
+  <!-- CART SIDE DRAWER -->
+  <div class="overlay" id="overlay"></div>
+  
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+    <div class="cart-head">
+      <div class="ch-title">
+        <span class="ch-icon">🛍️</span>
+        <h3>Your McDelivery Bag</h3>
+      </div>
+      <button class="close-drawer-btn" id="close-cart-btn" aria-label="Close cart">✕</button>
+    </div>
+
+    <!-- FREE DELIVERY PROGRESS BAR -->
+    <div class="delivery-progress-card">
+      <div class="dpc-text">
+        <span id="delivery-msg">Add $12.50 more for <strong>FREE Delivery!</strong> 🛵</span>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="delivery-progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- CART ITEMS LIST -->
+    <div class="cart-body">
+      <ul class="cart-items-list" id="cart-items-list">
+        <!-- Dynamically injected -->
+      </ul>
+    </div>
+
+    <!-- PROMO CODE INPUT -->
+    <div class="cart-promo-section">
+      <form id="cart-promo-form" class="cart-promo-form">
+        <input type="text" id="promo-input" placeholder="Enter Promo Code (e.g. GOLDEN20)" autocomplete="off">
+        <button type="submit" class="btn btn-secondary btn-sm" id="apply-promo-btn">Apply</button>
+      </form>
+      <div class="applied-discount-pill" id="applied-discount-pill" style="display: none;">
+        <span>Promo <strong id="applied-code-name">GOLDEN20</strong> (-20%)</span>
+        <button type="button" id="remove-promo-btn">✕</button>
+      </div>
+    </div>
+
+    <!-- TIP SELECTOR -->
+    <div class="cart-tip-section">
+      <div class="tip-label">Driver Tip (100% goes to driver):</div>
+      <div class="tip-buttons">
+        <button class="tip-btn" data-tip="1.50">$1.50</button>
+        <button class="tip-btn active" data-tip="3.00">$3.00</button>
+        <button class="tip-btn" data-tip="5.00">$5.00</button>
+        <button class="tip-btn" data-tip="0.00">None</button>
+      </div>
+    </div>
+
+    <!-- CART FOOTER & TOTALS -->
+    <div class="cart-footer">
+      <div class="bill-row">
+        <span>Subtotal</span>
+        <span id="bill-subtotal">$0.00</span>
+      </div>
+      <div class="bill-row">
+        <span>Estimated Tax (8%)</span>
+        <span id="bill-tax">$0.00</span>
+      </div>
+      <div class="bill-row">
+        <span>Delivery Fee</span>
+        <span id="bill-delivery">$3.99</span>
+      </div>
+      <div class="bill-row discount-row" id="bill-discount-row" style="display: none;">
+        <span>Promo Discount</span>
+        <span id="bill-discount">-$0.00</span>
+      </div>
+      <div class="bill-row">
+        <span>Driver Tip</span>
+        <span id="bill-tip">$3.00</span>
+      </div>
+      <div class="bill-row total-row">
+        <span>Estimated Total</span>
+        <strong id="bill-grand-total">$0.00</strong>
+      </div>
+
+      <button class="btn btn-primary full btn-checkout" id="checkout-trigger-btn">
+        <span>Proceed to Checkout</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- BURGER CUSTOMIZER MODAL -->
+  <div class="modal customizer-modal" id="customizer-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="mh-details">
+          <span class="eyebrow">Interactive Kitchen</span>
+          <h3 id="customizer-item-title">Customize Your Burger</h3>
+        </div>
+        <button class="modal-close" id="close-customizer-btn" aria-label="Close customizer">✕</button>
+      </div>
+
+      <div class="modal-body customizer-body">
+        
+        <div class="customizer-preview">
+          <img src="" alt="" id="customizer-item-img" class="customizer-img">
+          <p id="customizer-item-desc" class="customizer-desc"></p>
+        </div>
+
+        <!-- OPTIONS GROUPS -->
+        <div class="customizer-options">
+          
+          <!-- BREAD SELECTION -->
+          <div class="opt-group">
+            <h4>1. Bun Selection</h4>
+            <div class="opt-grid">
+              <label class="opt-card">
+                <input type="radio" name="cust-bun" value="Classic Toasted Sesame Bun" data-extra="0" checked>
+                <span>Classic Sesame Bun (+$0.00)</span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="cust-bun" value="Artisan Brioche Bun" data-extra="0.75">
+                <span>Artisan Brioche Bun (+$0.75)</span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="cust-bun" value="Crisp Lettuce Wrap" data-extra="0">
+                <span>Lettuce Wrap (Low-Carb)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- PATTIES COUNT -->
+          <div class="opt-group">
+            <h4>2. Patty Quantity</h4>
+            <div class="opt-grid">
+              <label class="opt-card">
+                <input type="radio" name="cust-patty" value="Standard" data-extra="0" checked>
+                <span>Standard Patty</span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="cust-patty" value="Add Extra 100% Beef Patty" data-extra="2.20">
+                <span>+1 Extra Beef Patty (+$2.20)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- CHEESE & TOPPINGS -->
+          <div class="opt-group">
+            <h4>3. Extras & Cheeses</h4>
+            <div class="opt-grid">
+              <label class="opt-card">
+                <input type="checkbox" name="cust-addon" value="Extra Melted American Cheese" data-extra="0.80">
+                <span>Extra Melted Cheese (+$0.80)</span>
+              </label>
+              <label class="opt-card">
+                <input type="checkbox" name="cust-addon" value="Crispy Applewood Bacon" data-extra="1.50">
+                <span>Crispy Bacon (+$1.50)</span>
+              </label>
+              <label class="opt-card">
+                <input type="checkbox" name="cust-addon" value="Extra Tangy Pickles" data-extra="0.30">
+                <span>Extra Pickles (+$0.30)</span>
+              </label>
+              <label class="opt-card">
+                <input type="checkbox" name="cust-addon" value="Caramelized Grilled Onions" data-extra="0.60">
+                <span>Grilled Onions (+$0.60)</span>
+              </label>
+              <label class="opt-card">
+                <input type="checkbox" name="cust-addon" value="Spicy Jalapeño Slices" data-extra="0.50">
+                <span>Spicy Jalapeños (+$0.50)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- SAUCES -->
+          <div class="opt-group">
+            <h4>4. Signature Sauces</h4>
+            <div class="opt-grid">
+              <label class="opt-card">
+                <input type="radio" name="cust-sauce" value="Signature Big Mac Sauce" checked>
+                <span>Special Big Mac® Sauce</span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="cust-sauce" value="Tangy BBQ Sauce">
+                <span>Tangy BBQ Sauce</span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="cust-sauce" value="Spicy Habanero Pepper Sauce">
+                <span>Spicy Pepper Sauce</span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="cust-sauce" value="Creamy Tartar Sauce">
+                <span>Creamy Tartar Sauce</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- UPGRADE TO VALUE MEAL -->
+          <div class="opt-group upgrade-group">
+            <label class="upgrade-checkbox-label">
+              <input type="checkbox" id="cust-meal-upgrade" data-extra="3.99">
+              <div class="upgrade-text">
+                <strong>🍟 Upgrade to Extra Value Meal (+ $3.99)</strong>
+                <p>Includes Medium World Famous Fries® + Medium Fountain Drink of your choice!</p>
+              </div>
+            </label>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-total">
+          <span>Custom Total:</span>
+          <strong id="customizer-total-price">$0.00</strong>
+        </div>
+        <button class="btn btn-primary" id="save-customization-btn">
+          <span>Add Custom Item to Bag</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITEM NUTRITION & QUICK VIEW MODAL -->
+  <div class="modal nutrition-modal" id="nutrition-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Nutritional Breakdown</span>
+          <h3 id="nutri-item-title">Item Nutrition</h3>
+        </div>
+        <button class="modal-close" id="close-nutrition-btn" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="nutri-stats-grid">
+          <div class="nutri-stat-box">
+            <span class="ns-label">Calories</span>
+            <strong class="ns-val" id="nutri-cal">590</strong>
+            <small>kcal</small>
+          </div>
+          <div class="nutri-stat-box">
+            <span class="ns-label">Total Fat</span>
+            <strong class="ns-val" id="nutri-fat">34g</strong>
+            <small>44% DV</small>
+          </div>
+          <div class="nutri-stat-box">
+            <span class="ns-label">Carbs</span>
+            <strong class="ns-val" id="nutri-carbs">46g</strong>
+            <small>17% DV</small>
+          </div>
+          <div class="nutri-stat-box">
+            <span class="ns-label">Protein</span>
+            <strong class="ns-val" id="nutri-protein">25g</strong>
+            <small>50% DV</small>
+          </div>
+        </div>
+
+        <div class="nutri-details">
+          <h4>Ingredients:</h4>
+          <p id="nutri-ingredients" class="nutri-text"></p>
+
+          <h4>Allergen Information:</h4>
+          <div class="allergen-badges" id="nutri-allergens">
+            <!-- Badges -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary full" id="close-nutrition-btn-2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal checkout-modal" id="checkout-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Complete Your Order</span>
+          <h3>McDelivery Express Checkout</h3>
+        </div>
+        <button class="modal-close" id="close-checkout-btn" aria-label="Close checkout">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="checkout-form" class="checkout-form">
+          
+          <div class="form-section-title">1. Delivery Address & Contact</div>
+          
+          <div class="form-row form-row-2">
+            <div class="form-group">
+              <label for="co-name">Full Name *</label>
+              <input type="text" id="co-name" required placeholder="John Doe" value="Gabriel Santos">
+            </div>
+            <div class="form-group">
+              <label for="co-phone">Phone Number *</label>
+              <input type="tel" id="co-phone" required placeholder="(555) 000-0000" value="(555) 892-4100">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="co-address">Street Address *</label>
+            <input type="text" id="co-address" required placeholder="123 Golden Avenue, Apt 4B" value="742 Evergreen Terrace, Apt 5">
+          </div>
+
+          <div class="form-group">
+            <label for="co-notes">Delivery Instructions (Optional)</label>
+            <input type="text" id="co-notes" placeholder="e.g. Leave at door, gate code #4192">
+          </div>
+
+          <div class="form-section-title">2. Select Payment Method</div>
+          
+          <div class="payment-methods-grid">
+            <label class="pay-method-card active">
+              <input type="radio" name="pay-method" value="applepay" checked>
+              <span class="pm-icon">🍏</span>
+              <strong>Apple Pay / Google Pay</strong>
+            </label>
+            <label class="pay-method-card">
+              <input type="radio" name="pay-method" value="card">
+              <span class="pm-icon">💳</span>
+              <strong>Credit / Debit Card</strong>
+            </label>
+            <label class="pay-method-card">
+              <input type="radio" name="pay-method" value="cash">
+              <span class="pm-icon">💵</span>
+              <strong>Cash upon Delivery</strong>
+            </label>
+          </div>
+
+          <div class="order-final-summary">
+            <div class="ofs-row">
+              <span>Final Amount to Pay:</span>
+              <strong id="co-final-total">$0.00</strong>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary full btn-lg" id="place-order-btn">
+            <span>Place McDelivery Order 🍔</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE ORDER TRACKER MODAL -->
+  <div class="modal tracker-modal" id="tracker-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="tracker-header">
+        <div class="th-logo">
+          <img src="mcdonalds-3.svg" alt="" width="36">
+        </div>
+        <div>
+          <h3>Live McDelivery Tracker</h3>
+          <p>Order Reference: <strong id="tracker-order-id">#MCD-892401</strong></p>
+        </div>
+        <button class="modal-close" id="close-tracker-btn" aria-label="Close tracker">✕</button>
+      </div>
+
+      <div class="modal-body tracker-body">
+        
+        <div class="tracker-eta-card">
+          <span class="eta-label">Estimated Delivery Time</span>
+          <div class="eta-time" id="eta-countdown">18 Minutes</div>
+          <span class="eta-kitchen">Preparing at: Broadway & 42nd St Flagship</span>
+        </div>
+
+        <!-- 5-STAGE PROGRESS BAR -->
+        <div class="tracker-stepper">
+          
+          <div class="track-step completed" id="step-order">
+            <div class="step-circle">✓</div>
+            <div class="step-text">
+              <strong>Order Received</strong>
+              <small>Kitchen acknowledged</small>
+            </div>
+          </div>
+
+          <div class="track-step active" id="step-grill">
+            <div class="step-circle">🍳</div>
+            <div class="step-text">
+              <strong>On the Grill</strong>
+              <small>Patties sizzling hot</small>
+            </div>
+          </div>
+
+          <div class="track-step" id="step-pack">
+            <div class="step-circle">🍟</div>
+            <div class="step-text">
+              <strong>Bagged & Quality Checked</strong>
+              <small>Fries sealed fresh</small>
+            </div>
+          </div>
+
+          <div class="track-step" id="step-transit">
+            <div class="step-circle">🛵</div>
+            <div class="step-text">
+              <strong>Out for Delivery</strong>
+              <small>Driver Mike is en route</small>
+            </div>
+          </div>
+
+          <div class="track-step" id="step-arrived">
+            <div class="step-circle">🏠</div>
+            <div class="step-text">
+              <strong>Enjoy Your Meal!</strong>
+              <small>Delivered to your door</small>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- DRIVER PROFILE CARD -->
+        <div class="driver-card">
+          <div class="driver-avatar">🏍️</div>
+          <div class="driver-info">
+            <strong>Mike D. (McDelivery Courier)</strong>
+            <span>Honda Scooter • 4.98 ★ (2,100+ deliveries)</span>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="call-driver-btn">Call Driver 📞</button>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary full" id="new-order-btn">Order Something Else</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAVORITES / WISHLIST MODAL -->
+  <div class="modal favorites-modal" id="favorites-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Your Personal Favorites</span>
+          <h3>Saved Items ❤️</h3>
+        </div>
+        <button class="modal-close" id="close-fav-btn" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="fav-items-list" id="fav-items-list">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary full" id="close-fav-btn-2">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITE A REVIEW MODAL -->
+  <div class="modal review-modal" id="review-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Your Voice Matters</span>
+          <h3>Rate Your McDelivery Experience</h3>
+        </div>
+        <button class="modal-close" id="close-review-modal-btn" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="new-review-form" class="review-form">
+          <div class="star-rating-select" id="star-rating-select">
+            <span class="star-pick" data-val="1">★</span>
+            <span class="star-pick" data-val="2">★</span>
+            <span class="star-pick" data-val="3">★</span>
+            <span class="star-pick" data-val="4">★</span>
+            <span class="star-pick active" data-val="5">★</span>
+          </div>
+
+          <div class="form-group">
+            <label for="rev-author">Your Name *</label>
+            <input type="text" id="rev-author" required placeholder="e.g. Alex M.">
+          </div>
+
+          <div class="form-group">
+            <label for="rev-text">Your Review *</label>
+            <textarea id="rev-text" rows="4" required placeholder="Tell us how hot your burger was, how fast the courier arrived, or your favorite item!"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary full">Submit My Review ⭐</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH OVERLAY MODAL -->
+  <div class="modal search-overlay-modal" id="search-overlay-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header search-modal-head">
+        <div class="search-modal-bar">
+          <span class="sm-icon">🔍</span>
+          <input type="text" id="overlay-search-input" placeholder="Type to search Big Mac, Nuggets, Fries, Shakes, Coffee..." autocomplete="off">
+          <button class="clear-search" id="clear-overlay-search">✕</button>
+        </div>
+        <button class="modal-close" id="close-search-overlay-btn" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="search-results-list" id="search-results-list">
+          <!-- Live results -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- JAVASCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>
